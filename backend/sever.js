@@ -5,7 +5,7 @@ const app= express()
 
 app.get("/summarisecommit", async (req,res)=>{
 
-    const {githubURL}=req.query
+  const {githubURL}=req.query
     console.log("github url from cilent",githubURL);
     
     const data= await main(githubURL)
@@ -14,6 +14,7 @@ app.get("/summarisecommit", async (req,res)=>{
         msg:"get request received",
         data
     })
+ 
 })
 
 
