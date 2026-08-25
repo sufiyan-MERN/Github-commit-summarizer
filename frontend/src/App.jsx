@@ -1,27 +1,14 @@
-import { useEffect } from 'react';
-import './App.css'
+import Header from "./components/Header";
+import Body from "./components/Body";
 
- function App () {
-  useEffect(()=>{
-    fetchData()
-  },[])
+import "./App.css";
 
-  const fetchData= async ()=>{
-    console.log("1 fetch started");
-
-    
-const response= await fetch("http://localhost:8080/summarisecommit")
-console.log("2 data fetch");
-
-  const data= await response.json()
-  console.log(" 3 repo commits ",data);
-  }
-  
-
+function App() {
   return (
-    <h1>commit summarizer page</h1> 
-
-  )
+    <div>
+      <Header />
+      <Body />
+    </div>
+  );
 }
-
-export default App
+export default App;
