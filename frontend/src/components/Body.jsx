@@ -146,7 +146,7 @@ const Body = () => {
                       </span>
                       <span>{formatDate(commitObj.commitData)}</span>
                       <code>
-                        {commitObj.commitHash?.slice(0, 7) || "-------"}
+                        { "commit hash: " + commitObj.commitHash?.slice(0, 12) || "-------"}
                       </code>
                     </div>
                     <h3>{commitObj.commitMessage || "Untitled commit"}</h3>
