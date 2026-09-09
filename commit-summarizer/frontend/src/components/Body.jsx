@@ -23,7 +23,7 @@ const Body = () => {
       return;
     }
     setIsLoading(true);
-    setError("");
+    setError(""); 
     try {
       const response = await axios.get(
         "http://localhost:8080/summarisecommit",

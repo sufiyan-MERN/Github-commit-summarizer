@@ -41,6 +41,8 @@
   margin-right: 38px;
   color: var(--muted);
   font: 15px var(--mono);
+  /* letter-spacing: -0.5px; */
+  word-spacing: -3px;
 }
 .nav-links a:hover,
 .hero-link:hover {
@@ -240,7 +242,6 @@
   cursor: wait;
 }
 .message {
-
   margin-top: 15px;
   color: rgba(0, 0, 0, 0.76);
   font: 12px var(--mono);
@@ -351,6 +352,7 @@
   color: var(--muted);
   font-size: 13px;
 }
+
 footer {
   display: flex;
   justify-content: space-between;
@@ -361,6 +363,97 @@ footer {
 footer > span:first-child {
   color: var(--ink);
   font: 700 16px var(--display);
+}
+.shimmer {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--line);
+}
+.shimmer-card {
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+}
+.shimmer-header,
+.shimmer-body {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 91px;
+  border-bottom: 1px solid var(--line);
+}
+.shimmer-body {
+  display: grid;
+  grid-template-columns: 74px 170px 1fr;
+  gap: 22px;
+  align-items: center;
+  min-height: 93px;
+  border-bottom: 1px solid var(--line);
+}
+.shimmer-heading,
+.shimmer-total-commits,
+.shimmer-photo,
+.shimmer-message,
+.shimmer-summary {
+  position: relative;
+  overflow: hidden;
+  background: var(--line);
+}
+.shimmer-heading::after,
+.shimmer-total-commits::after,
+.shimmer-photo::after,
+.shimmer-message::after,
+.shimmer-summary::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.7),
+    transparent
+  );
+  animation: shimmer-wave 1.6s ease-in-out infinite;
+}
+.shimmer-heading {
+  width: 220px;
+  height: 32px;
+  border-radius: 20px;
+}
+.shimmer-total-commits {
+  width: 92px;
+  height: 44px;
+  border-radius: 15px;
+}
+.shimmer-photo {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+}
+.shimmer-message {
+  width: 100%;
+  max-width: 170px;
+  height: 25px;
+  border-radius: 8px;
+}
+.shimmer-summary {
+  width: min(100%, 520px);
+  height: 16px;
+  border-radius: 5px;
+}
+.shimmer-body:nth-child(3) *::after {
+  animation-delay: 0.18s;
+}
+.shimmer-body:nth-child(4) *::after {
+  animation-delay: 0.36s;
+}
+@keyframes shimmer-wave {
+  100% {
+    transform: translateX(100%);
+  }
 }
 @keyframes rise {
   from {
@@ -480,5 +573,25 @@ footer > span:first-child {
   footer {
     flex-wrap: wrap;
     gap: 16px;
+  }
+  .shimmer {
+    padding: 58px 0;
+  }
+  .shimmer-body {
+    grid-template-columns: 38px 1fr;
+    gap: 15px;
+  }
+  .shimmer-summary {
+    grid-column: 2;
+    width: 80%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shimmer-heading::after,
+  .shimmer-total-commits::after,
+  .shimmer-photo::after,
+  .shimmer-message::after,
+  .shimmer-summary::after {
+    animation: none;
   }
 }
