@@ -25,10 +25,9 @@ const Body = () => {
     setIsLoading(true);
     setError(""); 
     try {
-      const response = await axios.get(
-        "http://localhost:8080/summarisecommit",
-        { params: { githubURL } },
-      );
+      const response = await axios.get("/api/summarize-commits", {
+        params: { githubURL },
+      });
       setData(response.data.data || []);
     } catch {
       setData(null);
